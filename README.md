@@ -19,8 +19,8 @@ npm -v
 2. **Clone repo**
 
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/Gbaole/mobilebe.git
+cd https://github.com/Gbaole/mobilebe.git
 ```
 
 3. **Cài đặt dependencies**
