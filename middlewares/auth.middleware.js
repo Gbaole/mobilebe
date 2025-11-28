@@ -1,6 +1,6 @@
 import { verifyToken } from "../config/jwt.js";
 import User from "../models/user.model.js";
-
+// 19110242-Lê Bá Minh
 export const authMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader?.startsWith("Bearer "))

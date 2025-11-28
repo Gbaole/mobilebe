@@ -1,3 +1,4 @@
+// 19110167-Lê Trần Gia Bảo
 export default class BaseRepository {
   constructor(model) {
     this.model = model;

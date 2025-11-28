@@ -1,6 +1,6 @@
 import BaseRepository from "./base.repository.js";
 import Product from "../models/product.model.js";
-
+// 19110167-Lê Trần Gia Bảo
 export default class ProductRepository extends BaseRepository {
   constructor() {
     super(Product);

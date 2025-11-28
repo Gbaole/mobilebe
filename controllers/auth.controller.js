@@ -1,6 +1,6 @@
 import BaseController from "./base.controller.js";
 import AuthService from "../services/auth.service.js";
-
+// 19110242-Lê Bá Minh
 export default class AuthController extends BaseController {
   constructor() {
     super(new AuthService());

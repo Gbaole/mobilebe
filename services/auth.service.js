@@ -1,7 +1,7 @@
 import AuthRepository from "../repositories/auth.repository.js";
 import { generateToken } from "../config/jwt.js";
 import bcrypt from "bcrypt";
-
+// 19110242-Lê Bá Minh
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString(); // 6 digits
 }

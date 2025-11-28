@@ -1,6 +1,6 @@
 import BaseRepository from "./base.repository.js";
 import User from "../models/user.model.js";
-
+// 19110242-Lê Bá Minh
 export default class AuthRepository extends BaseRepository {
   constructor() {
     super(User);
