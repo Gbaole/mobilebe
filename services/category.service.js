@@ -1,17 +1,20 @@
-import categoryRepository from "../repositories/category.repository.js";
-import productRepository from "../repositories/product.repository.js";
+import CategoryRepository from "../repositories/category.repository.js";
 
-class CategoryService {
-  async getAllCategories() {
-    return await categoryRepository.findAll();
+export default class CategoryService {
+  constructor() {
+    this.repo = new CategoryRepository();
   }
 
-  async getProductsByCategory(categoryId) {
-    return await productRepository.findAll(
-      { category: categoryId },
-      { populate: "brand category", sort: { createdAt: -1 } }
-    );
+  async create(payload) {
+    return await this.repo.create(payload);
+  }
+
+  async findAll(options = {}) {
+    // options can include populate, sort, limit, skip
+    return await this.repo.findAll({}, options);
+  }
+
+  async findById(id) {
+    return await this.repo.findById(id);
   }
 }
-
-export default new CategoryService();

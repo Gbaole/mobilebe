@@ -1,34 +1,29 @@
-import productRepository from "../repositories/product.repository.js";
+import ProductRepository from "../repositories/product.repository.js";
 
-class ProductService {
-  // sản phẩm bán chạy nhất
-  async getTopSelling(limit = 10) {
-    return await productRepository.findAll(
-      {},
-      {
-        sort: { sold: -1 },
-        limit,
-        populate: "brand category",
-      }
-    );
+export default class ProductService {
+  constructor() {
+    this.repo = new ProductRepository();
   }
 
-  // sản phẩm mới nhất <= 7 ngày
-  async getNewProducts(limit = 10) {
-    const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  async create(payload) {
+    return await this.repo.create(payload);
+  }
 
-    return await productRepository.findAll(
-      {
-        createdAt: { $gte: sevenDaysAgo },
-      },
-      {
-        sort: { createdAt: -1 },
-        limit,
-        populate: "brand category",
-      }
-    );
+  async findAll(filter = {}, options = {}) {
+    return await this.repo.findAll(filter, options);
+  }
+
+  async getByCategory(categoryId, query = {}) {
+    const page = parseInt(query.page || 1);
+    const limit = Math.min(parseInt(query.limit || 12), 100);
+    const sortBy = query.sortBy || "price";
+    const order = query.order || "asc";
+    return await this.repo.findByCategory(categoryId, {
+      page,
+      limit,
+      sortBy,
+      order,
+      populate: "category",
+    });
   }
 }
-
-export default new ProductService();

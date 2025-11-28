@@ -1,10 +1,12 @@
 import BaseRepository from "./base.repository.js";
 import Category from "../models/category.model.js";
 
-class CategoryRepository extends BaseRepository {
+export default class CategoryRepository extends BaseRepository {
   constructor() {
     super(Category);
   }
-}
 
-export default new CategoryRepository();
+  findByName(name) {
+    return this.model.findOne({ name });
+  }
+}

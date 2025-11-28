@@ -1,10 +1,12 @@
 import express from "express";
-import productRouter from "../routes/product.routes.js";
-import categoryRouter from "../routes/category.routes.js";
+import authRoutes from "./auth.routes.js";
+import categoryRoutes from "./categories.routes.js";
+import productRoutes from "./products.routes.js";
 
 const mainRouter = express.Router();
 
-mainRouter.use("/products", productRouter);
-mainRouter.use("/categories", categoryRouter);
+mainRouter.use("/auth", authRoutes);
+mainRouter.use("/categories", categoryRoutes);
+mainRouter.use("/products", productRoutes);
 
 export default mainRouter;
